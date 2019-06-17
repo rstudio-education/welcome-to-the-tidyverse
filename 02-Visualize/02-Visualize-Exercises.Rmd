@@ -31,6 +31,22 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
+## Help Me
+
+What do `facet_grid()` and `facet_wrap()` do? 
+(run the code, interpret, convince your group)
+
+```{r}
+# Makes a plot that the commands below will modify
+q <- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))
+
+q + facet_grid(. ~ cyl)
+q + facet_grid(drv ~ .)
+q + facet_grid(drv ~ cyl)
+q + facet_wrap(~ class)
+```
+
+
 ## Your Turn 3
 
 Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
@@ -49,7 +65,7 @@ Make a histogram of the `hwy` variable from `mpg`. Hint: do not supply a y varia
 
 ## Your Turn 5
 
-Make a bar chart `hwy` colored by `class`. Use the help page for `geom_bar` to choose a "color" aesthetic for class.
+Use the help page for `geom_histogram` to make the bins 2 units wide.
 
 ```{r}
 
@@ -57,7 +73,15 @@ Make a bar chart `hwy` colored by `class`. Use the help page for `geom_bar` to c
 
 ## Your Turn 6
 
-Predict what this code will do. Then run it.
+Make a bar chart `hwy` colored by `class`. Use the help page for `geom_bar` to choose a "color" aesthetic for class.
+
+```{r}
+
+```
+
+## Quiz
+
+What will this code do?
 
 ```{r}
 ggplot(mpg) + 
@@ -65,17 +89,22 @@ ggplot(mpg) +
   geom_smooth(aes(displ, hwy))
 ```
 
+## Quiz
+
+What is different about this plot? Run the code!
+
+```{r}
+p <- ggplot(mpg) + 
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+
+library(plotly)
+ggplotly(p)
+```
+
 ## Your Turn 7
 
 What does `getwd()` return?
-
-```{r}
-
-```
-
-## Your Turn 8
-
-Save the last plot and then locate it in the files pane.
 
 ```{r}
 

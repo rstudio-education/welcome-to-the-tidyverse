@@ -1,8 +1,7 @@
 ---
 title: "`r params$name`"
 params: 
-  name:
-    value: "Garrett"
+  name: "Garrett"
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +25,7 @@ sex <-
   group_by(sex) %>% 
   summarise(n = sum(n)) %>% 
   filter(n == max(n)) %>% 
-  pluck("sex") %>% 
+  pull("sex") %>% 
   switch("M" = "boy's", "F" = "girl's")
 ```
 

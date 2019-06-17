@@ -2,15 +2,24 @@
 title: "Models"
 ---
 
-```{r setup, message=FALSE}
+```{r setup}
 library(tidyverse)
 library(modelr)
 library(broom)
 
-wages <- heights %>% filter(income > 0)
+# Import wages here
+
+# Fall back in case you cannot load wages
+# wages <- heights %>% filter(income > 0)
 ```
 
 ## Your Turn 1
+
+* Change the working directory to `04-Models`. 
+* Then import `wages.xlsx` as wages and *copy the code to your setup chunk*.
+* Be sure to set NA: to NA.
+
+## Your Turn 2
 
 Fit the model on the slide and then examine the output. What does it look like?
 
@@ -18,7 +27,7 @@ Fit the model on the slide and then examine the output. What does it look like?
 
 ```
 
-## Your Turn 2
+## Your Turn 3
 
 Use a pipe to model `log(income)` against `height`. Then use broom and dplyr functions to extract:
 
@@ -30,7 +39,7 @@ Use a pipe to model `log(income)` against `height`. Then use broom and dplyr fun
 ```
 
 
-## Your Turn 3
+## Your Turn 4
 
 Model `log(income)` against `education` and `height` and `sex`. Can you interpret the coefficients?
 
@@ -38,7 +47,7 @@ Model `log(income)` against `education` and `height` and `sex`. Can you interpre
 
 ```
 
-## Your Turn 4
+## Your Turn 5
 
 Add `+ geom_smooth(model = lm)` to the code below. What happens?
 
@@ -55,19 +64,9 @@ wages %>%
 ```
 
 
-## Your Turn 5
-
-Use `add_residuals` to make a histogram of the residuals of mod_ehs.
-
-```{r}
-# In case you haven't made mod_ehs
-mod_ehs <- wages %>% lm(log(income) ~ education + height + sex, data = .)
-
-```
-
 ## Your Turn 6
 
-Work together to complete the code below, which compares the residuals of all three models, `mod_h`, `mod_eh`, and `mod_ehs`.
+Use `gather_residuals` to complete the code below, which compares the residuals of all three models, `mod_h`, `mod_eh`, and `mod_ehs`.
 
 ```{r warning = FALSE, message = FALSE}
 
@@ -78,12 +77,9 @@ mod_ehs <- wages %>% lm(log(income) ~ education + height + sex, data = .)
 
 # Be sure to remove or comment out each _ before running the code
 wages %>% 
-  _____________(______, ___ = "mod_h") %>% 
-  _____________(mod_eh, ___ = _______) %>% 
-  _____________(______, var = _______) %>% 
-  _____________(key = "model", value = _____, _______________) %>%     
-  ggplot() +
-    ___________(aes(resid)) +
+  _____________(______, ______, ______) %>% 
+  ggplot() ___ 
+    geom_histogram(aes(x = ______)) +
     facet_grid(_____ ~ .)
 ```
 

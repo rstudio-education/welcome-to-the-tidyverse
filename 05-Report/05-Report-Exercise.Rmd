@@ -26,7 +26,7 @@ sex <-
   group_by(sex) %>% 
   summarise(n = sum(n)) %>% 
   filter(n == max(n)) %>% 
-  pluck("sex") %>% 
+  pull("sex") %>% 
   switch("M" = "boy's", "F" = "girl's")
 ```
 
