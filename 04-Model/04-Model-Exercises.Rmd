@@ -10,7 +10,10 @@ library(broom)
 # Import wages here
 
 # Fall back in case you cannot load wages
-# wages <- heights %>% filter(income > 0)
+# wages <- heights %>%
+#   filter(income > 0) %>%
+#   mutate(marital = as.character(marital),
+#          sex = as.character(sex))
 ```
 
 ## Your Turn 1
