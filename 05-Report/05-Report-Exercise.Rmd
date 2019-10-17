@@ -8,7 +8,7 @@ library(babynames)
 
 name_data <- 
   babynames %>% 
-  filter(name == params$name) %>% 
+  filter(name == "Garrett") %>% 
   mutate(sex = case_when(sex == "M" ~ "Male", 
                          sex == "F" ~ "Female"))
 
